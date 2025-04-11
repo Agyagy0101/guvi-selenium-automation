@@ -1,4 +1,6 @@
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from pages.base_page import BasePage
 
 class LoginPage(BasePage):
@@ -10,13 +12,13 @@ class LoginPage(BasePage):
     LOGOUT_BTN = (By.LINK_TEXT, "Logout")
 
     def login(self, email, password):
-        self.find(*self.EMAIL).send_keys(email)
-        self.find(*self.PASSWORD).send_keys(password)
-        self.find(*self.SUBMIT).click()
+        WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.EMAIL)).send_keys(email)
+        WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.PASSWORD)).send_keys(password)
+        WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(self.SUBMIT)).click()
 
     def get_error(self):
-        return self.find(*self.ERROR_MSG).text
+        return WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.ERROR_MSG)).text
 
     def logout(self):
-        self.find(*self.PROFILE_ICON).click()
-        self.find(*self.LOGOUT_BTN).click()
+        WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(self.PROFILE_ICON)).click()
+        WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(self.LOGOUT_BTN)).click()

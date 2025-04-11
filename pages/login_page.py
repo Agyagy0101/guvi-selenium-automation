@@ -6,7 +6,7 @@ from pages.base_page import BasePage
 class LoginPage(BasePage):
     EMAIL = (By.ID, "email")
     PASSWORD = (By.ID, "password")
-    SUBMIT = (By.XPATH, "//button[text()='Login']")
+    SUBMIT = (By.ID, "mobile-login")
     ERROR_MSG = (By.CLASS_NAME, "error")
     PROFILE_ICON = (By.XPATH, "//img[@alt='Profile']")
     LOGOUT_BTN = (By.LINK_TEXT, "Logout")

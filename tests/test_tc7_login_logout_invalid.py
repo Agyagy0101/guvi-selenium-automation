@@ -9,7 +9,7 @@ def test_invalid_login(browser):
 def test_logout(browser):
     page = LoginPage(browser)
     page.visit("https://www.guvi.in/sign-in/")
-    page.login("valid_email@example.com", "valid_password")
+    page.login("agustineagy23417@gmail.com", "Sandy@01")
     assert page.is_displayed(*page.PROFILE_ICON)
     page.logout()
     assert not page.is_displayed(*page.PROFILE_ICON)
